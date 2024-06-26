@@ -23,3 +23,4 @@ rootProject.name = "pcrm"
 include(":app")
 include(":core-ui")
 include(":network")
+include(":features:characters")

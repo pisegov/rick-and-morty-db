@@ -1,6 +1,9 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kapt)
 }
 
 android {
@@ -13,6 +16,12 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+
+        val properties = Properties().apply {
+            load(rootProject.file("local.properties").inputStream())
+        }
+
+        buildConfigField("String", "BASE_URL", properties.getProperty("BASE_URL"))
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -37,10 +46,11 @@ android {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
     buildFeatures {
+        buildConfig = true
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.14"
     }
     packaging {
         resources {
@@ -60,7 +70,18 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.navigation.compose)
+
+    implementation(libs.dagger)
+    implementation(libs.jakarta.inject.api)
+    kapt(libs.dagger.compiler)
+
+    implementation(libs.kotlinx.serialization.json)
+
     implementation(project(":core-ui"))
+    implementation(project(":network"))
+    implementation(project(":features:characters"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
