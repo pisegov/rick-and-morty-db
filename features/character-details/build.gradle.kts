@@ -1,32 +1,19 @@
-import java.util.Properties
-
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.kapt)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 android {
-    namespace = "com.myaxa.pcrm"
+    namespace = "com.myaxa.character_details"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.myaxa.pcrm"
         minSdk = 26
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
-
-        val properties = Properties().apply {
-            load(rootProject.file("local.properties").inputStream())
-        }
-
-        buildConfigField("String", "BASE_URL", properties.getProperty("BASE_URL"))
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -46,24 +33,19 @@ android {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
     buildFeatures {
-        buildConfig = true
         compose = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.14"
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
     }
 }
 
 dependencies {
 
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
@@ -74,22 +56,15 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
 
     implementation(libs.dagger)
-    implementation(libs.jakarta.inject.api)
     kapt(libs.dagger.compiler)
 
-    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.ktor.client.core)
+    implementation(libs.kotlinx.serialization.core)
 
-    implementation(project(":core"))
     implementation(project(":network"))
-
-    implementation(project(":features:characters"))
-    implementation(project(":features:character-details"))
+    implementation(project(":core"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
 }

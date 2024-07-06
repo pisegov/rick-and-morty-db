@@ -2,6 +2,7 @@ package com.myaxa.pcrm.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.myaxa.character_details.ui.CharacterDetailsViewModel
 import com.myaxa.characters.ui.CharactersViewModel
 import dagger.Binds
 import dagger.MapKey
@@ -31,6 +32,11 @@ internal interface ViewModelModule {
     @IntoMap
     @ViewModelKey(CharactersViewModel::class)
     fun bindCharactersViewModel(impl: CharactersViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CharacterDetailsViewModel::class)
+    fun bindCharacterDetailsViewModel(impl: CharacterDetailsViewModel): ViewModel
 }
 
 @Target(AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER)

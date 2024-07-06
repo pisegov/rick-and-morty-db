@@ -5,8 +5,8 @@ import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.myaxa.characters.navigation.CHARACTERS_SCREEN_ROUTE
-import com.myaxa.characters.navigation.charactersScreenDestination
+import com.myaxa.character_details.navigation.CHARACTER_DETAILS_SCREEN_ROUTE
+import com.myaxa.character_details.navigation.characterDetailsScreenDestination
 
 @Composable
 fun AppNavigation(
@@ -14,7 +14,7 @@ fun AppNavigation(
 ) {
     NavHost(
         navController = navController,
-        startDestination = CHARACTERS_SCREEN_ROUTE,
+        startDestination = CHARACTER_DETAILS_SCREEN_ROUTE,
         enterTransition = {
             slideIntoContainer(
                 AnimatedContentTransitionScope.SlideDirection.Left,
@@ -28,6 +28,6 @@ fun AppNavigation(
             )
         }
     ) {
-        charactersScreenDestination()
+        characterDetailsScreenDestination()
     }
 }
