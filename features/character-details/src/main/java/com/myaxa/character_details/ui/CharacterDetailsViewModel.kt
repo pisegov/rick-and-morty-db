@@ -10,14 +10,14 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class CharacterDetailsViewModel @Inject constructor(
+internal class CharacterDetailsViewModel @Inject constructor(
     private val networkDataSource: CharacterDetailsNetworkDataSource,
 ) : ViewModel() {
 
     private val _characterFlow = MutableStateFlow<CharacterDTO?>(null)
-    internal val characterFlow = _characterFlow.asStateFlow()
+    val characterFlow = _characterFlow.asStateFlow()
 
-    internal fun loadCharacter(id: CharacterId) {
+    fun loadCharacter(id: CharacterId) {
         viewModelScope.launch {
             _characterFlow.emit(networkDataSource.getCharacter(id))
         }

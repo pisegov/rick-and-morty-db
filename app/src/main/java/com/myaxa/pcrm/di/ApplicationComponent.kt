@@ -1,16 +1,19 @@
 package com.myaxa.pcrm.di
 
 import androidx.lifecycle.ViewModelProvider
-import com.myaxa.network.NetworkClient
-import com.myaxa.pcrm.BuildConfig
+import com.myaxa.character_details.di.CharacterDetailsApiModule
+import com.myaxa.characters.di.CharactersApiModule
 import dagger.Component
-import dagger.Module
-import dagger.Provides
-import kotlinx.serialization.json.Json
 import javax.inject.Scope
 
 @ApplicationScope
-@Component(modules = [ApplicationModule::class, ViewModelModule::class])
+@Component(
+    modules = [
+        ApplicationModule::class,
+        CharactersApiModule::class,
+        CharacterDetailsApiModule::class,
+    ]
+)
 internal interface ApplicationComponent {
 
     @Component.Factory
@@ -19,17 +22,6 @@ internal interface ApplicationComponent {
     }
 
     val viewModelFactory: ViewModelProvider.Factory
-}
-
-@Module
-internal interface ApplicationModule {
-    companion object {
-        @Provides
-        fun provideNetworkClient(): NetworkClient {
-            val json = Json { ignoreUnknownKeys = true }
-            return NetworkClient(BuildConfig.BASE_URL, json)
-        }
-    }
 }
 
 @Scope

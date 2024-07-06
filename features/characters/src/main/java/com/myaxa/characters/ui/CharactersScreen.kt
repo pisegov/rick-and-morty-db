@@ -13,9 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun CharactersScreen(
-    modifier: Modifier = Modifier,
+internal fun CharactersScreen(
     viewModel: CharactersViewModel,
+    modifier: Modifier = Modifier,
 ) {
     val character = viewModel.characterFlow.collectAsState()
 
@@ -26,7 +26,9 @@ fun CharactersScreen(
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top,
-        modifier = modifier.fillMaxSize().padding(120.dp)
+        modifier = modifier
+            .fillMaxSize()
+            .padding(120.dp)
     ) {
         character.value?.run {
             Text(text = id.toString())

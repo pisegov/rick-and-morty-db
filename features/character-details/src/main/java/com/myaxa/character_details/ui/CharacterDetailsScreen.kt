@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun CharacterDetailsScreen(
+internal fun CharacterDetailsScreen(
     viewModel: CharacterDetailsViewModel,
     modifier: Modifier = Modifier,
 ) {
