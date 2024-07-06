@@ -1,4 +1,4 @@
-package com.myaxa.core_ui
+package com.myaxa.core.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext

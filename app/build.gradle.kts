@@ -79,7 +79,7 @@ dependencies {
 
     implementation(libs.kotlinx.serialization.json)
 
-    implementation(project(":core-ui"))
+    implementation(project(":core"))
     implementation(project(":network"))
     implementation(project(":features:characters"))
 

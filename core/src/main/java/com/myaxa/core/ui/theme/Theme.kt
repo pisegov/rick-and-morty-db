@@ -1,4 +1,4 @@
-package com.myaxa.core_ui.theme
+package com.myaxa.core.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

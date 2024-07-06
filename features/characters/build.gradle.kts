@@ -63,7 +63,7 @@ dependencies {
     implementation(libs.kotlinx.serialization.core)
 
     implementation(project(":network"))
-    implementation(project(":core-ui"))
+    implementation(project(":core"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

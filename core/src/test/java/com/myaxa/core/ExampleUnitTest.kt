@@ -1,4 +1,4 @@
-package com.myaxa.core_ui
+package com.myaxa.core
 
 import org.junit.Test
 

@@ -21,6 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "pcrm"
 include(":app")
-include(":core-ui")
+include(":core")
 include(":network")
 include(":features:characters")

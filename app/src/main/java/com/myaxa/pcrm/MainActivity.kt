@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.myaxa.core_ui.theme.PcrmTheme
+import com.myaxa.core.ui.theme.PcrmTheme
 import com.myaxa.pcrm.navigaion.AppNavigation
 
 class MainActivity : ComponentActivity() {

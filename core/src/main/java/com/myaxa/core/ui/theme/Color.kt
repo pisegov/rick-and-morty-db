@@ -1,4 +1,4 @@
-package com.myaxa.core_ui.theme
+package com.myaxa.core.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
