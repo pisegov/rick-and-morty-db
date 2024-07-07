@@ -22,12 +22,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
 import coil.compose.SubcomposeAsyncImage
 import com.myaxa.character_details.ui.components.CharacterDetailsNamePlateComponent
 import com.myaxa.character_details.ui.components.DataPointComponent
 import com.myaxa.character_details.ui.model.CharacterUi
 import com.myaxa.character_details.ui.model.DataPoint
+import com.myaxa.character_details.ui.model.UiState
 import com.myaxa.core.ui.components.LoadingComponent
 
 @Composable
@@ -35,20 +35,24 @@ internal fun CharacterDetailsScreen(
     viewModel: CharacterDetailsViewModel,
     modifier: Modifier = Modifier,
 ) {
-    val character by viewModel.characterFlow.collectAsState()
+    val uiState: UiState by viewModel.characterFlow.collectAsState()
 
-    val characterDataPoints by remember {
+    val characterDataPoints: List<DataPoint> by remember {
         derivedStateOf {
             buildList {
-                character?.let { character ->
-                    add(DataPoint("Last known location", character.location.name))
-                    add(DataPoint("Species", character.species))
-                    add(DataPoint("Gender", character.gender.stringResource))
-                    character.type.takeIf { it.isNotEmpty() }?.let { type ->
-                        add(DataPoint("Type", type))
+                when (val state = uiState) {
+                    is UiState.Success -> {
+                        add(DataPoint("Last known location", state.data.location.name))
+                        add(DataPoint("Species", state.data.species))
+                        add(DataPoint("Gender", state.data.gender.stringResource))
+                        state.data.type.takeIf { it.isNotEmpty() }?.let { type ->
+                            add(DataPoint("Type", type))
+                        }
+                        add(DataPoint("Origin", state.data.origin.name))
+                        add(DataPoint("Episodes count", state.data.episodeUrls.size.toString()))
                     }
-                    add(DataPoint("Origin", character.origin.name))
-                    add(DataPoint("Episodes count", character.episodeUrls.size.toString()))
+
+                    is UiState.Error, UiState.Loading -> {}
                 }
             }
         }
@@ -58,13 +62,22 @@ internal fun CharacterDetailsScreen(
         viewModel.loadCharacter(1)
     }
 
-    character?.let {
-        CharacterDetailsScreen(
-            character = it,
-            characterDataPoints = characterDataPoints,
-            modifier = modifier
-        )
+    when (val state = uiState) {
+        is UiState.Success -> {
+            CharacterDetailsScreen(
+                character = state.data,
+                characterDataPoints = characterDataPoints,
+                modifier = modifier
+            )
+        }
+
+        is UiState.Error -> {}
+
+        UiState.Loading -> {
+            LoadingComponent()
+        }
     }
+
 }
 
 @Composable

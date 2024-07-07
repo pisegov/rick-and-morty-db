@@ -10,7 +10,7 @@ internal class CharacterDetailsRepository @Inject constructor(
     private val remoteDataSource: CharacterDetailsNetworkDataSource,
 ) {
 
-    suspend fun getCharacter(id: CharacterId): Character {
-       return remoteDataSource.getCharacter(id).toDomainModel()
+    suspend fun getCharacter(id: CharacterId): Result<Character> {
+       return remoteDataSource.getCharacter(id).map { it.toDomainModel() }
     }
 }

@@ -3,7 +3,7 @@ package com.myaxa.character_details.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.myaxa.character_details.data.CharacterDetailsRepository
-import com.myaxa.character_details.ui.model.CharacterUi
+import com.myaxa.character_details.ui.model.UiState
 import com.myaxa.character_details.ui.model.toUiModel
 import com.myaxa.core.domain.CharacterId
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,12 +15,18 @@ internal class CharacterDetailsViewModel @Inject constructor(
     private val repository: CharacterDetailsRepository,
 ) : ViewModel() {
 
-    private val _characterFlow = MutableStateFlow<CharacterUi?>(null)
+    private val _characterFlow = MutableStateFlow<UiState>(UiState.Loading)
     val characterFlow = _characterFlow.asStateFlow()
 
     fun loadCharacter(id: CharacterId) {
         viewModelScope.launch {
-            _characterFlow.emit(repository.getCharacter(id).toUiModel())
+            repository.getCharacter(id)
+                .onSuccess { model ->
+                    _characterFlow.emit(UiState.Success(data = model.toUiModel()))
+                }
+                .onFailure { throwable ->
+                    _characterFlow.emit(UiState.Error(e = throwable))
+                }
         }
     }
 }
