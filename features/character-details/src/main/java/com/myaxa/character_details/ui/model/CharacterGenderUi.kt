@@ -3,7 +3,7 @@ package com.myaxa.character_details.ui.model
 import com.myaxa.character_details.R
 import com.myaxa.character_details.domain.CharacterGender
 
-internal sealed class CharacterGenderUi(stringResource: Int) {
+internal sealed class CharacterGenderUi(val stringResource: Int) {
     data object Female : CharacterGenderUi(R.string.female)
     data object Male : CharacterGenderUi(R.string.male)
     data object Genderless : CharacterGenderUi(R.string.genderless)

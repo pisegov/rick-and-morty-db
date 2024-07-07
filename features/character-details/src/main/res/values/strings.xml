@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="status">Status: %1$s</string>
     <string name="alive">Alive</string>
     <string name="dead">Dead</string>
 

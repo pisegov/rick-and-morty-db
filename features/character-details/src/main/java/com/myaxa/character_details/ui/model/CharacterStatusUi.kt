@@ -4,7 +4,7 @@ import androidx.compose.ui.graphics.Color
 import com.myaxa.character_details.R
 import com.myaxa.character_details.domain.CharacterStatus
 
-internal sealed class CharacterStatusUi(stringResource: Int, color: Color) {
+internal sealed class CharacterStatusUi(val stringResource: Int, val color: Color) {
     data object Alive : CharacterStatusUi(R.string.alive, Color.Green)
     data object Dead : CharacterStatusUi(R.string.dead, Color.Red)
     data object Unknown : CharacterStatusUi(R.string.unknown, Color.Yellow)
