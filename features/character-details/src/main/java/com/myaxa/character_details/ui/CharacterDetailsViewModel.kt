@@ -22,7 +22,7 @@ internal class CharacterDetailsViewModel @Inject constructor(
         viewModelScope.launch {
             repository.getCharacter(id)
                 .onSuccess { model ->
-                    _characterFlow.emit(UiState.Success(data = model.toUiModel()))
+                    _characterFlow.emit(UiState.Success(character = model.toUiModel()))
                 }
                 .onFailure { throwable ->
                     _characterFlow.emit(UiState.Error(e = throwable))

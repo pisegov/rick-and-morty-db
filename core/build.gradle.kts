@@ -54,6 +54,8 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.lifecycle.viewmodel.compose.android)
 
+    implementation(libs.coil)
+
     implementation(libs.kotlinx.serialization.core)
 
     implementation(libs.dagger)
