@@ -10,22 +10,11 @@ import io.ktor.client.plugins.logging.SIMPLE
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
-interface NetworkClient {
-    val client: HttpClient
-}
-
-fun NetworkClient(
+class NetworkClientProvider(
     baseUrl: String,
     json: Json = Json,
-): NetworkClient {
-    return KtorClient(baseUrl, json)
-}
-
-internal class KtorClient(
-    private val baseUrl: String,
-    private val json: Json,
-) : NetworkClient {
-    override val client = HttpClient(OkHttp) {
+) {
+    val client = HttpClient(OkHttp) {
         defaultRequest { url(baseUrl) }
 
         install(Logging) {
