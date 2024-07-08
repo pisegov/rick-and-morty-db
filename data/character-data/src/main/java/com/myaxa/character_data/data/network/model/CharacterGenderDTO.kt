@@ -20,7 +20,7 @@ enum class CharacterGenderDTO(val remoteString: String) {
  * Need to deserialize any unsupported gender as unknown
  */
 private class CharacterGenderSerializer : EnumAsStringSerializer<CharacterGenderDTO>(
-    serialName = "CharacterStatusSerializer",
+    serialName = "CharacterGenderSerializer",
     serialize = { v -> v.remoteString },
     deserialize = { v ->
         CharacterGenderDTO.entries.firstOrNull { v == it.remoteString }

@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.myaxa.characters"
+    namespace = "com.myaxa.character_list"
     compileSdk = 34
 
     defaultConfig {
@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    debugImplementation(libs.ui.tooling)
 
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.compose)

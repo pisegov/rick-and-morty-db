@@ -10,7 +10,11 @@ class CharacterRepository @Inject constructor(
     private val remoteDataSource: CharacterNetworkDataSource,
 ) {
 
+    suspend fun loadCharacterListPage(pageNumber: Int): Result<List<Character>> {
+        return remoteDataSource.getCharacterListPage(pageNumber).map { list -> list.map { it.toDomainModel() } }
+    }
+
     suspend fun getCharacter(id: CharacterId): Result<Character> {
-       return remoteDataSource.getCharacter(id).map { it.toDomainModel() }
+        return remoteDataSource.getCharacter(id).map { it.toDomainModel() }
     }
 }
