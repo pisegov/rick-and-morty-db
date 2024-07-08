@@ -2,7 +2,7 @@ package com.myaxa.character_details.di
 
 import androidx.lifecycle.ViewModel
 import com.myaxa.character_details.ui.CharacterDetailsViewModel
-import com.myaxa.core.di.ViewModelKey
+import com.myaxa.core.ui.di.ViewModelKey
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    debugImplementation(libs.ui.tooling)
 
     implementation(libs.coil)
 
@@ -58,14 +59,11 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
 
     implementation(libs.dagger)
-    debugImplementation(libs.ui.tooling)
     kapt(libs.dagger.compiler)
 
-    implementation(libs.ktor.client.core)
-    implementation(libs.kotlinx.serialization.core)
-
-    implementation(project(":network"))
-    implementation(project(":core"))
+    implementation(project(":data:character-data"))
+    implementation(project(":core:domain"))
+    implementation(project(":core:ui"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

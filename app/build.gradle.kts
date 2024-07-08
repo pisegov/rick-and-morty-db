@@ -79,10 +79,11 @@ dependencies {
 
     implementation(libs.kotlinx.serialization.json)
 
-    implementation(project(":core"))
-    implementation(project(":network"))
-
-    implementation(project(":features:characters"))
+    implementation(project(":core:domain"))
+    implementation(project(":core:ui"))
+    implementation(project(":data:network"))
+    implementation(project(":data:character-data"))
+    implementation(project(":features:character-list"))
     implementation(project(":features:character-details"))
 
     testImplementation(libs.junit)

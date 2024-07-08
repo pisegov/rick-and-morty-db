@@ -9,7 +9,7 @@ import com.myaxa.character_details.ui.model.DataPoint
 import com.myaxa.character_details.ui.model.UiState
 import com.myaxa.core.domain.CharacterId
 import com.myaxa.core.ui.components.LoadingComponent
-import com.myaxa.core.ui.daggerViewModel
+import com.myaxa.core.ui.di.daggerViewModel
 
 @Composable
 internal fun CharacterDetailsScreen(

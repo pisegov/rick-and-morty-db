@@ -1,7 +1,7 @@
 package com.myaxa.pcrm.di
 
 import com.myaxa.character_details.di.CharacterDetailsApiModule
-import com.myaxa.characters.di.CharactersApiModule
+import com.myaxa.character_list.di.CharactersApiModule
 import dagger.Module
 
 @Module(

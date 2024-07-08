@@ -1,13 +1,13 @@
 package com.myaxa.character_details.ui.model
 
-import com.myaxa.character_details.R
-import com.myaxa.character_details.domain.CharacterGender
+import com.myaxa.character_data.domain.CharacterGender
+import com.myaxa.core.ui.R as CoreUiR
 
 internal sealed class CharacterGenderUi(val stringResource: Int) {
-    data object Female : CharacterGenderUi(R.string.female)
-    data object Male : CharacterGenderUi(R.string.male)
-    data object Genderless : CharacterGenderUi(R.string.genderless)
-    data object Unknown : CharacterGenderUi(R.string.unknown)
+    data object Female : CharacterGenderUi(CoreUiR.string.female)
+    data object Male : CharacterGenderUi(CoreUiR.string.male)
+    data object Genderless : CharacterGenderUi(CoreUiR.string.genderless)
+    data object Unknown : CharacterGenderUi(CoreUiR.string.unknown)
 }
 
 internal fun CharacterGender.toUiModel() = when (this) {

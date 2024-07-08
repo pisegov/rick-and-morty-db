@@ -1,6 +1,6 @@
 package com.myaxa.character_details.ui.model
 
-import com.myaxa.character_details.domain.Character
+import com.myaxa.character_data.domain.Character
 import com.myaxa.core.domain.CharacterId
 
 internal data class CharacterUi(

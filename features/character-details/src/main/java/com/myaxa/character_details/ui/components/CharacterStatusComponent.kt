@@ -9,9 +9,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.myaxa.character_details.R
 import com.myaxa.character_details.ui.model.CharacterStatusUi
 import com.myaxa.core.ui.theme.RickTextPrimary
+import com.myaxa.core.ui.R as CoreUiR
 
 @Composable
 internal fun CharacterStatusComponent(
@@ -20,7 +20,7 @@ internal fun CharacterStatusComponent(
 ) {
     val text = stringResource(id = status.stringResource)
     Text(
-        text = stringResource(id = R.string.status, text),
+        text = stringResource(id = CoreUiR.string.status, text),
         color = RickTextPrimary,
         modifier = modifier
             .border(

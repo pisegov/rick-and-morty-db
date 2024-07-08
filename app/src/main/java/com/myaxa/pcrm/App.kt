@@ -2,7 +2,7 @@ package com.myaxa.pcrm
 
 import android.app.Application
 import androidx.lifecycle.ViewModelProvider
-import com.myaxa.core.ui.ViewModelFactoryProvider
+import com.myaxa.core.ui.di.ViewModelFactoryProvider
 import com.myaxa.pcrm.di.ApplicationComponent
 import com.myaxa.pcrm.di.DaggerApplicationComponent
 

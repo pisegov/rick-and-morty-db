@@ -1,7 +1,6 @@
 package com.myaxa.pcrm.di
 
-import com.myaxa.character_details.data.network.CharacterDetailsNetworkDataSource
-import com.myaxa.characters.data.CharacterListNetworkDataSource
+import com.myaxa.character_data.data.network.CharacterNetworkDataSource
 import com.myaxa.network.NetworkClientProvider
 import com.myaxa.pcrm.BuildConfig
 import dagger.Module
@@ -18,12 +17,9 @@ internal class NetworkModule {
     }
 
     @Provides
-    internal fun provideCharacterNetworkDataSource(networkClientProvider: NetworkClientProvider): CharacterListNetworkDataSource {
-        return CharacterListNetworkDataSource(networkClientProvider)
-    }
-
-    @Provides
-    internal fun provideCharacterDetailsNetworkDataSource(networkClientProvider: NetworkClientProvider): CharacterDetailsNetworkDataSource {
-        return CharacterDetailsNetworkDataSource(networkClientProvider)
+    internal fun provideCharacterNetworkDataSource(
+        networkClientProvider: NetworkClientProvider,
+    ): CharacterNetworkDataSource {
+        return CharacterNetworkDataSource(networkClientProvider)
     }
 }
