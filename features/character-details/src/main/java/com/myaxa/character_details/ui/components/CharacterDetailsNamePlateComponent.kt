@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import com.myaxa.character_details.ui.model.CharacterStatusUi
 import com.myaxa.core.ui.theme.RickAction
@@ -15,13 +16,16 @@ import com.myaxa.core.ui.theme.RickAction
 internal fun CharacterDetailsNamePlateComponent(
     name: String,
     status: CharacterStatusUi,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    textSize: TextUnit = 42.sp,
 ) {
+
     Column(modifier = modifier.fillMaxWidth()) {
         CharacterStatusComponent(status = status)
         Text(
             text = name,
-            fontSize = 42.sp,
+            fontSize = textSize,
+            lineHeight = textSize,
             fontWeight = FontWeight.Bold,
             color = RickAction
         )
@@ -32,5 +36,8 @@ internal fun CharacterDetailsNamePlateComponent(
 @Preview
 @Composable
 internal fun CharacterDetailsNamePlatePreview() {
-    CharacterDetailsNamePlateComponent(name = "Rick Sanchez", status = CharacterStatusUi.Alive)
+    CharacterDetailsNamePlateComponent(
+        name = "Abadango Cluster Princess",
+        status = CharacterStatusUi.Alive
+    )
 }
