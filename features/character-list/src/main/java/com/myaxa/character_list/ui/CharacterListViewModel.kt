@@ -3,11 +3,11 @@ package com.myaxa.character_list.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.myaxa.character_data.data.CharacterRepository
-import com.myaxa.character_data.domain.Character
-import com.myaxa.character_list.ui.model.CharacterUi
+import com.myaxa.character_list.ui.model.UiState
 import com.myaxa.character_list.ui.model.toUiModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,19 +22,38 @@ internal class CharacterListViewModel @Inject constructor(
     private val _characterListFlow = MutableStateFlow<UiState>(UiState.Loading)
     val characterListFlow = _characterListFlow.asStateFlow()
 
-    fun loadInitialPage() = viewModelScope.launch {
-        repository.loadCharacterListPage(INITIAL_PAGE_NUMBER)
-            .onSuccess { list: List<Character> ->
-                _characterListFlow.emit(UiState.Success(list.map { it.toUiModel() }))
+    fun loadInitialPage() {
+        if (_characterListFlow.value != UiState.Loading) return
+        loadPage(INITIAL_PAGE_NUMBER)
+    }
+
+    fun loadNextPage(pageNumber: Int) {
+        loadPage(pageNumber + 1)
+    }
+
+    private fun loadPage(pageNumber: Int) = viewModelScope.launch {
+        repository.loadCharacterListPage(pageNumber)
+
+            .onSuccess { page ->
+
+                _characterListFlow.update { state ->
+
+                    val newList = page.list.map { it.toUiModel() }
+
+                    if (state !is UiState.Success || pageNumber == INITIAL_PAGE_NUMBER) {
+                        return@update UiState.Success(
+                            list = newList,
+                            pageNumber = INITIAL_PAGE_NUMBER,
+                            totalPagesNumber = page.totalPagesNumber
+                        )
+                    }
+
+                    state.copy(list = state.list + newList, pageNumber = state.pageNumber + 1)
+                }
             }
             .onFailure { throwable ->
-                _characterListFlow.emit(UiState.Error(throwable.message))
+                _characterListFlow.update { UiState.Error(throwable.message) }
             }
     }
 }
 
-internal sealed interface UiState {
-    data class Success(val list: List<CharacterUi>) : UiState
-    data class Error(val message: String?) : UiState
-    data object Loading : UiState
-}

@@ -20,8 +20,8 @@ class CharacterNetworkDataSource internal constructor(
 
     internal suspend fun getCharacterListPage(
         pageNumber: Number
-    ): Result<List<CharacterDTO>> = safeApiCall {
-        client.get("character?page=$pageNumber").body<CharacterListPageDTO>().list
+    ): Result<CharacterListPageDTO> = safeApiCall {
+        client.get("character?page=$pageNumber").body<CharacterListPageDTO>()
     }
 
     internal suspend fun getCharacter(id: CharacterId): Result<CharacterDTO> = safeApiCall {
