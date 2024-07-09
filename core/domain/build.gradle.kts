@@ -5,10 +5,10 @@ plugins {
 
 android {
     namespace = "com.myaxa.core_ui"
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = 26
+        minSdk = libs.versions.minSdk.get().toInt()
 
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -32,6 +32,5 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
 }
