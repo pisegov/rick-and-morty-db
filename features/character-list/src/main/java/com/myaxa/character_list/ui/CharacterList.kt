@@ -4,9 +4,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.safeDrawingPadding
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
+import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -20,11 +20,11 @@ internal fun CharacterList(
     modifier: Modifier = Modifier,
     onCharacterClicked: (CharacterId) -> Unit = {},
 ) {
-    LazyVerticalGrid(
+    LazyVerticalStaggeredGrid(
         contentPadding = PaddingValues(16.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
+        verticalItemSpacing = 8.dp,
         horizontalArrangement = Arrangement.spacedBy(8.dp),
-        columns = GridCells.Fixed(2),
+        columns = StaggeredGridCells.Fixed(2),
         modifier = modifier
             .safeDrawingPadding()
     ) {
