@@ -7,7 +7,7 @@ import kotlin.reflect.KClass
 /**
  *
  * Need to annotate @Binds annotated methods that bind viewModel instances into map
- * for [multi viewModel factory][com.myaxa.pcrm.util.ViewModelFactory]
+ * for [multi viewModel factory][com.myaxa.rick_and_morty_db.util.ViewModelFactory]
  */
 @Target(
     AnnotationTarget.FUNCTION,

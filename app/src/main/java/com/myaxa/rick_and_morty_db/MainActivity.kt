@@ -1,4 +1,4 @@
-package com.myaxa.pcrm
+package com.myaxa.rick_and_morty_db
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -8,8 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.myaxa.core.ui.theme.PcrmTheme
-import com.myaxa.pcrm.navigaion.AppNavigation
+import com.myaxa.core.ui.theme.RickAndMortyDbTheme
+import com.myaxa.rick_and_morty_db.navigaion.AppNavigation
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
 
             val navController = rememberNavController()
 
-            PcrmTheme {
+            RickAndMortyDbTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
                     AppNavigation(navController = navController)
                 }

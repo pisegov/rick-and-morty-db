@@ -1,4 +1,4 @@
-package com.myaxa.pcrm.util
+package com.myaxa.rick_and_morty_db.util
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

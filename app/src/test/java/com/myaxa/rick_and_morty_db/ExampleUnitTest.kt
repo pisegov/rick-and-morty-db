@@ -1,4 +1,4 @@
-package com.myaxa.pcrm
+package com.myaxa.rick_and_morty_db
 
 import org.junit.Test
 

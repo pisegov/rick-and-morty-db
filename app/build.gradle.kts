@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.myaxa.pcrm"
+    namespace = "com.myaxa.rick_and_morty_db"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.myaxa.pcrm"
+        applicationId = "com.myaxa.rick_and_morty_db"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

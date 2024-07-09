@@ -1,8 +1,8 @@
-package com.myaxa.pcrm.di
+package com.myaxa.rick_and_morty_db.di
 
 import com.myaxa.character_data.data.network.CharacterNetworkDataSource
 import com.myaxa.network.NetworkClientProvider
-import com.myaxa.pcrm.BuildConfig
+import com.myaxa.rick_and_morty_db.BuildConfig
 import dagger.Module
 import dagger.Provides
 import kotlinx.serialization.json.Json

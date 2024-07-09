@@ -1,4 +1,4 @@
-package com.myaxa.pcrm.di
+package com.myaxa.rick_and_morty_db.di
 
 import com.myaxa.character_details.di.CharacterDetailsApiModule
 import com.myaxa.character_list.di.CharacterListApiModule

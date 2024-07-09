@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "pcrm"
+rootProject.name = "RickAndMortyDb"
 include(":app")
 include(":core:domain")
 include(":core:ui")

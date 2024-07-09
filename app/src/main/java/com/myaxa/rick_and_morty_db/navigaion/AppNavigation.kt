@@ -1,4 +1,4 @@
-package com.myaxa.pcrm.navigaion
+package com.myaxa.rick_and_morty_db.navigaion
 
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.core.tween
