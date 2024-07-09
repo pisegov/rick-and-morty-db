@@ -11,7 +11,7 @@ import com.myaxa.character_list.navigation.CharacterListScreenRoute
 import com.myaxa.character_list.navigation.characterListScreenDestination
 
 @Composable
-fun AppNavigation(navController: NavHostController) {
+internal fun AppNavigation(navController: NavHostController) {
     NavHost(
         navController = navController,
         startDestination = CharacterListScreenRoute,

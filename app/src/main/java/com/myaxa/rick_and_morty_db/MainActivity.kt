@@ -11,7 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import com.myaxa.core.ui.theme.RickAndMortyDbTheme
 import com.myaxa.rick_and_morty_db.navigaion.AppNavigation
 
-class MainActivity : ComponentActivity() {
+internal class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

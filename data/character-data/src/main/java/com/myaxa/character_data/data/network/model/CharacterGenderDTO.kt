@@ -5,7 +5,7 @@ import com.myaxa.network.util.EnumAsStringSerializer
 import kotlinx.serialization.Serializable
 
 @Serializable(with = CharacterGenderSerializer::class)
-enum class CharacterGenderDTO(val remoteString: String) {
+internal enum class CharacterGenderDTO(val remoteString: String) {
     FEMALE("Female"),
 
     MALE("Male"),
