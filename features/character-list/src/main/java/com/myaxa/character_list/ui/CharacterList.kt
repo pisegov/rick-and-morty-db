@@ -12,11 +12,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.myaxa.character_list.ui.components.CharacterListItem
 import com.myaxa.character_list.ui.model.CharacterUi
+import com.myaxa.core.domain.CharacterId
 
 @Composable
 internal fun CharacterList(
     characterList: List<CharacterUi>,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onCharacterClicked: (CharacterId) -> Unit = {},
 ) {
     LazyVerticalGrid(
         contentPadding = PaddingValues(16.dp),
@@ -26,11 +28,11 @@ internal fun CharacterList(
         modifier = modifier
             .safeDrawingPadding()
     ) {
-        items(items = characterList, key = { it.id }) {
+        items(items = characterList, key = { it.id }) { model ->
             CharacterListItem(
-                character = it,
+                character = model,
                 modifier = Modifier
-                    .clickable { }
+                    .clickable { onCharacterClicked(model.id) }
             )
         }
     }
